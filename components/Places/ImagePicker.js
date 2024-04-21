@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: Colors.primary100,
-    borderRadius: 8
+    borderRadius: 10
   },
   image: {
     height: '100%',

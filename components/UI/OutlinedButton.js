@@ -8,7 +8,7 @@ export default function OutlinedButton({ onPress, icon, children }) {
       <Pressable
         onPress={onPress}
         style={styles.button}
-        android_ripple={{ color: Colors.accent500 }}
+        android_ripple={{ color: Colors.primary500 }}
       >
         <Ionicons name={icon} size={18} color={Colors.primary500} style={styles.icon} />
         <Text style={styles.text}>{children}</Text>
