@@ -4,20 +4,31 @@ import {
   useForegroundPermissions,
   PermissionStatus,
 } from 'expo-location';
+import { useNavigation, useRoute } from '@react-navigation/native';
 
 import OutlinedButton from '../UI/OutlinedButton';
 import { Colors } from '../../constants/colors';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getMapPreview } from '../../util/location';
-import { useNavigation } from '@react-navigation/native';
 
 export default function LocationPicker() {
   const [pickedLocation, setPickedLocation] = useState();
 
   const navigation = useNavigation();
+  const route = useRoute();
 
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
+
+  useEffect(() => {
+    const mapPickedLocation = route.params && {
+      lat: route.params.pickedLat,
+      lng: route.params.pickedLng,
+    };
+    if (mapPickedLocation) {
+      setPickedLocation(mapPickedLocation);
+    }
+  }, [route]);
 
   async function verifyPermissions() {
     if (
