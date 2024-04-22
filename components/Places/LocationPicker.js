@@ -76,7 +76,6 @@ export default function LocationPicker({ onPickLocation }) {
       lat: location.coords.latitude,
       lng: location.coords.longitude,
     });
-    console.log(location);
   }
 
   function pickOnMapHandler() {
