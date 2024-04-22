@@ -9,9 +9,12 @@ import OutlinedButton from '../UI/OutlinedButton';
 import { Colors } from '../../constants/colors';
 import { useState } from 'react';
 import { getMapPreview } from '../../util/location';
+import { useNavigation } from '@react-navigation/native';
 
 export default function LocationPicker() {
   const [pickedLocation, setPickedLocation] = useState();
+
+  const navigation = useNavigation();
 
   const [locationPermissionInformation, requestPermission] =
     useForegroundPermissions();
@@ -51,7 +54,9 @@ export default function LocationPicker() {
     console.log(location);
   }
 
-  function pickOnMapHandler() {}
+  function pickOnMapHandler() {
+    navigation.navigate('Map');
+  }
 
   return (
     <View>
@@ -95,6 +100,6 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    borderRadius: 10
+    borderRadius: 10,
   },
 });
